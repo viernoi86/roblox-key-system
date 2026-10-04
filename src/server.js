@@ -6,6 +6,7 @@ const config = require("./config");
 
 const adminRoutes = require("./routes/admin");
 const apiRoutes = require("./routes/api");
+const { startDiscordBot } = require("./discord");
 
 const app = express();
 
@@ -63,4 +64,8 @@ app.listen(config.port, () => {
   console.log(`Serveur : http://localhost:${config.port}`);
   console.log(`Environnement : ${config.nodeEnv}`);
   console.log("");
+});
+
+startDiscordBot().catch((error) => {
+  console.error("Erreur démarrage Discord :", error);
 });
