@@ -1,0 +1,22 @@
+{
+  "name": "roblox-key-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Private Roblox key management system with Discord and Supabase",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "hash-password": "node src/scripts/hash-password.js",
+    "register-commands": "node src/discord/register-commands.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "nanoid": "^5.1.5"
+  }
+}

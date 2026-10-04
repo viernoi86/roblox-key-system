@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Roblox Key System — Connexion</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="login-page">
+
+    <main class="login-container">
+
+        <div class="login-card">
+
+            <div class="logo">
+                🔐
+            </div>
+
+            <h1>Roblox Key System</h1>
+
+            <p class="subtitle">
+                Panneau d'administration
+            </p>
+
+            <form id="loginForm">
+
+                <label for="password">
+                    Mot de passe administrateur
+                </label>
+
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="••••••••••••"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button
+                    id="loginButton"
+                    type="submit"
+                >
+                    Se connecter
+                </button>
+
+                <p
+                    id="errorMessage"
+                    class="error-message"
+                    hidden
+                ></p>
+
+            </form>
+
+        </div>
+
+    </main>
+
+    <script>
+        const form = document.getElementById("loginForm");
+        const password = document.getElementById("password");
+        const button = document.getElementById("loginButton");
+        const errorMessage = document.getElementById("errorMessage");
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            errorMessage.hidden = true;
+            errorMessage.textContent = "";
+
+            button.disabled = true;
+            button.textContent = "Connexion...";
+
+            try {
+                const response = await fetch("/admin/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "same-origin",
+                    body: JSON.stringify({
+                        password: password.value
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(
+                        data.error || "Connexion impossible."
+                    );
+                }
+
+                window.location.href = "/admin.html";
+
+            } catch (error) {
+
+                errorMessage.textContent =
+                    error.message || "Une erreur est survenue.";
+
+                errorMessage.hidden = false;
+
+            } finally {
+
+                button.disabled = false;
+                button.textContent = "Se connecter";
+            }
+        });
+    </script>
+
+</body>
+</html>

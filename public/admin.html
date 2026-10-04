@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Roblox Key System — Admin</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <header class="topbar">
+
+            <div>
+                <h1>🔐 Roblox Key System</h1>
+
+                <p>
+                    Gestion des clés
+                </p>
+            </div>
+
+            <button
+                id="logoutButton"
+                class="logout-button"
+            >
+                Déconnexion
+            </button>
+
+        </header>
+
+
+        <main class="content">
+
+            <!-- GENERATE KEY -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Générer une clé</h2>
+
+                        <p>
+                            Crée une nouvelle clé Roblox.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="generate-row">
+
+                    <select id="duration">
+
+                        <option value="1d">
+                            1 jour
+                        </option>
+
+                        <option value="7d">
+                            7 jours
+                        </option>
+
+                        <option value="30d">
+                            30 jours
+                        </option>
+
+                        <option value="unlimited">
+                            Illimitée
+                        </option>
+
+                    </select>
+
+
+                    <button id="generateButton">
+                        🔑 Générer
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="generatedKey"
+                    class="generated-key"
+                    hidden
+                >
+
+                    <div>
+                        <span>
+                            Nouvelle clé
+                        </span>
+
+                        <strong id="generatedKeyValue">
+                        </strong>
+                    </div>
+
+                    <button
+                        id="copyKeyButton"
+                        class="secondary-button"
+                    >
+                        📋 Copier
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- KEYS -->
+
+            <section class="card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Clés</h2>
+
+                        <p>
+                            Toutes les clés générées.
+                        </p>
+                    </div>
+
+                    <button
+                        id="refreshButton"
+                        class="secondary-button"
+                    >
+                        ↻ Actualiser
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Clé
+                                </th>
+
+                                <th>
+                                    Durée
+                                </th>
+
+                                <th>
+                                    Statut
+                                </th>
+
+                                <th>
+                                    Création
+                                </th>
+
+                                <th>
+                                    Expiration
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="keysTable">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    class="loading"
+                                >
+                                    Chargement...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="/js/admin.js"></script>
+
+</body>
+</html>
