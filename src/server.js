@@ -66,6 +66,20 @@ app.listen(config.port, () => {
   console.log("");
 });
 
+console.log("→ Test démarrage Discord");
+console.log(
+  "→ DISCORD_BOT_TOKEN présent :",
+  Boolean(config.discord.botToken)
+);
+console.log(
+  "→ DISCORD_CLIENT_ID présent :",
+  Boolean(config.discord.clientId)
+);
+console.log(
+  "→ DISCORD_GUILD_ID présent :",
+  Boolean(config.discord.guildId)
+);
+
 startDiscordBot().catch((error) => {
   console.error("Erreur démarrage Discord :", error);
 });
